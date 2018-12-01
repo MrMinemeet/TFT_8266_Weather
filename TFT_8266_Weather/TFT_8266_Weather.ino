@@ -8,14 +8,17 @@
 #define rst  8
 #define DHT11_PIN 5
 
-// Object für Display
+// Objekt für Display
 TFT TFTscreen = TFT(cs, dc, rst);
+
+// Objekt für DHT Sensor
 DHT dht(DHT11_PIN, DHT11);
 
-// Char Array für Zahl als Char
+// Char Arrays für Werte
 char tempChar[11];
 char humidityChar[11];
 
+// Variablen für Werte
 float temp;
 float humidity;
 
@@ -26,36 +29,27 @@ void setup() {
 }
 
 void loop() {
-
+  // Display löschen
   TFTscreen.background(0, 0, 0);
 
-  
+  // Werte einlesen
   temp = dht.readTemperature();
   humidity = dht.readHumidity();
   
-
+  // Schrift auf Weiß stellen
   TFTscreen.stroke(255, 255, 255);
-  
+
+  // Werte in Char Arrays umwandeln
   itoa(temp, tempChar, 10);
-  
   itoa(humidity, humidityChar, 10);
 
-  
-  TFTscreen.text("Temp.:\n", 0, 0);
-  
-  // Textfarbe auf Weiß setzen und Temp ausgeben
+  // Texte und Werte ausgeben
+  TFTscreen.text("Temp..:\n", 0, 0);
   TFTscreen.text(tempChar, 0, 32);
 
   
-  TFTscreen.text("Temp.:\n", 0,64);
-
-  
-  // Long in Char Array umwandeln
-  itoa(humidity, tempChar, 10);
-  
-  // Textfarbe auf Weiß setzen und Temp ausgeben
+  TFTscreen.text("Luftf.t:\n", 0,64);
   TFTscreen.text(humidityChar, 0, 96);
 
   delay(5000);
-
 }

@@ -44,12 +44,17 @@ void loop() {
   itoa(humidity, humidityChar, 10);
 
   // Texte und Werte ausgeben
-  TFTscreen.text("Temp..:\n", 0, 0);
+  TFTscreen.setTextSize(2);
+  TFTscreen.text("Temperatur:\n", 0, 0);
+  TFTscreen.setTextSize(3);
   TFTscreen.text(tempChar, 0, 32);
-
+  TFTscreen.text("C", 40, 32);
   
-  TFTscreen.text("Luftf.t:\n", 0,64);
+  TFTscreen.setTextSize(2);
+  TFTscreen.text("Feuchtigkeit:\n", 0,64);
+  TFTscreen.setTextSize(3);
   TFTscreen.text(humidityChar, 0, 96);
+  TFTscreen.text("%", 40, 96);
 
   delay(5000);
 }

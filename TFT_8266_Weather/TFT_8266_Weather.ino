@@ -56,5 +56,5 @@ void loop() {
   TFTscreen.text(humidityChar, 0, 96);
   TFTscreen.text("%", 40, 96);
 
-  delay(5000);
+  delay(30000);
 }
